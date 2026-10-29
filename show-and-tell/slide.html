@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Interview Practice Bank</title>
+<style>
+  :root {
+    --bg: #faf8ff;
+    --ink: #1c1530;
+    --muted: #4a4060;
+    --violet: #6d28d9;
+    --violet-soft: #ede7fd;
+    --violet-mid: #c4b5fd;
+    --card: #ffffff;
+    --line: #e2dbf5;
+    /* body type scales with whichever viewport side is tighter */
+    --fs: min(1.55vw, 2.65vh);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    overflow: hidden;
+  }
+  .slide {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    grid-template-rows: auto 1fr;
+    gap: min(2vw, 3vh);
+    padding: min(3vw, 4.5vh) min(3.5vw, 5vh);
+  }
+  header {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: baseline;
+    gap: 1.2em;
+    border-bottom: 0.25vh solid var(--violet);
+    padding-bottom: 1.2vh;
+  }
+  header h1 {
+    font-size: min(3vw, 5vh);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+  header span {
+    font-size: var(--fs);
+    color: var(--violet);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .left {
+    display: flex;
+    flex-direction: column;
+    gap: min(1.4vw, 2.2vh);
+    min-height: 0;
+  }
+  .card {
+    flex: 1;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-left: 0.6vw solid var(--violet);
+    border-radius: 1vh;
+    padding: 1.6vh 1.6vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .label {
+    font-size: calc(var(--fs) * 0.8);
+    font-weight: 800;
+    color: var(--violet);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.6vh;
+  }
+  .card p {
+    font-size: var(--fs);
+    line-height: 1.38;
+    color: var(--ink);
+  }
+
+  /* the one playful touch: question 4 as the top card of a flashcard stack */
+  .right {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2vh 1.5vw;
+  }
+  .stack {
+    position: relative;
+    width: 100%;
+    height: 88%;
+  }
+  .stack::before, .stack::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 2vh;
+    border: 1px solid var(--violet-mid);
+    background: var(--violet-soft);
+  }
+  .stack::before { transform: rotate(-5deg) translate(-1vw, 1vh); }
+  .stack::after  { transform: rotate(3deg) translate(0.8vw, 0.5vh); background: #f5f1ff; }
+  .flashcard {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: var(--violet);
+    color: #fff;
+    border-radius: 2vh;
+    padding: 4vh 2.6vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 2vh 4vh rgba(76, 29, 149, 0.28);
+    transform: rotate(-1deg);
+  }
+  .flashcard .label {
+    color: #ddd6fe;
+    font-size: var(--fs);
+    margin-bottom: 2.5vh;
+  }
+  .flashcard .q {
+    font-size: min(3.5vw, 6vh);
+    line-height: 1.15;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+  }
+  .flashcard .q em {
+    font-style: normal;
+    background: #fff;
+    color: var(--violet);
+    padding: 0 0.2em;
+    border-radius: 0.2em;
+  }
+  .flashcard .corner {
+    position: absolute;
+    top: 2.5vh;
+    right: 2vw;
+    font-size: min(5vw, 8.5vh);
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.18);
+    line-height: 1;
+  }
+</style>
+</head>
+<body>
+  <main class="slide">
+    <header>
+      <h1>My instrument: an interview practice bank</h1>
+      <span>Show &amp; tell</span>
+    </header>
+
+    <section class="left">
+      <div class="card">
+        <div class="label">1 · What it is</div>
+        <p>A practice bank for quant and SDE interview questions that Claude can call: random question, hint, answer, mark reviewed, quiz. It runs on Render with Neon Postgres, and sign-in keeps my questions and progress private.</p>
+      </div>
+      <div class="card">
+        <div class="label">2 · The idea behind it</div>
+        <p>Claude doesn't remember what I've practiced; the bank does. So it can quiz me on questions I've really reviewed, and my skill makes it give hints first and answers last, so I try before I look.</p>
+      </div>
+      <div class="card">
+        <div class="label">3 · One wrong thing + one fix</div>
+        <p>Saving questions by hand is slow, because I paste each question, hint and answer one by one. I haven't fixed it yet; I'm weighing whether to pull questions from a practice site with an official API or a scraper.</p>
+      </div>
+    </section>
+
+    <section class="right">
+      <div class="stack">
+        <div class="flashcard">
+          <div class="corner">?</div>
+          <div class="label">4 · The feedback I want</div>
+          <p class="q">Should I pull questions from a practice site with an <em>API</em> or a <em>scraper</em>?</p>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

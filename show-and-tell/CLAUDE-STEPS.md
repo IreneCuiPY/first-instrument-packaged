@@ -9,16 +9,16 @@ not the claude.ai website: the website can't write files to your repo.)*
 ## My four answers (fill these in first)
 
 1. **What it is** — what does my instrument do?
-   > (your answer)
+   > A practice bank for quant and SDE interview questions that Claude can call: random question, hint, answer, mark reviewed, quiz. It runs on Render with Neon Postgres, and sign-in keeps my questions and progress private.
 
 2. **The idea behind it** — how does it help me think better with AI?
-   > (your answer)
+   > Claude doesn't remember what I've practiced; the bank does. So it can quiz me on questions I've really reviewed, and my skill makes it give hints first and answers last, so I try before I look.
 
 3. **One wrong thing + one fix** — what broke, and what I did about it:
-   > (your answer)
+   > Saving questions by hand is slow, because I paste each question, hint and answer one by one. I haven't fixed it yet; I'm weighing whether to pull questions from a practice site with an official API or a scraper.
 
 4. **What feedback I want** — the question I'm ending my show with:
-   > (your answer)
+   > Should I pull questions from a practice site with an API or a scraper?
 
 ## Claude: your instructions
 
